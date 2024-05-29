@@ -1,0 +1,13 @@
+{% extends 'index.html' %}
+{% load crispy_forms_tags %}
+
+{% block title_block %} {{ title }} {% endblock %}
+
+{% block body_block %}
+<h2>Your Account</h2>
+<form method="POST" class="py-3">
+    {{ form|crispy }}
+    {% csrf_token %}
+    <button class="btn btn-warning block" type="submit">SAVE</button>
+</form>
+{% endblock %}

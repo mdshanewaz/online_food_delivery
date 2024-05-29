@@ -1,0 +1,37 @@
+{% extends 'index.html' %}
+
+{% block title_block %} {{ title }} {% endblock %}
+
+{% block body_block %}
+
+<div class="row py-5">
+    <h2 class="text-center display-5 mb-5">Select a Suitable Package That Suits You Best!</h2>
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-4">
+        <div class="columns">
+            <ul class="price">
+              <li class="header">BASIC</li>
+              <li>Lunch</li>
+              <li>Dinner</li>
+              <li>Lunch + Dinner</li>
+              <li>For 3 Days, 7 Days, 15 Days and 30 Days</li>
+              <li class="grey"><a href="{% url 'SubscriptionApp:basic' %}" class="button">Click to Learn More</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="columns">
+            <ul class="price">
+              <li class="header">PREMIUM</li>
+              <li>Lunch</li>
+              <li>Dinner</li>
+              <li>Lunch + Dinner</li>
+              <li>For 3 Days, 7 Days, 15 Days and 30 Days</li>
+              <li class="grey"><a href="{% url 'SubscriptionApp:premium' %}" class="button">Click to Learn More</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
