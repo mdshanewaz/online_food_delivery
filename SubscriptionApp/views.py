@@ -33,4 +33,15 @@ def basicPakView(request):
 @login_required
 def perimumPakView(request):
     title = 'PREMIUM'
-    return render(request, 'SubscriptionApp/package.html', context={'title':title})
+    form = PackageForm
+    
+    if request.method == 'POST':
+        form = PackageForm(request.POST)
+        if form.is_valid():
+            package = form.save(commit=False)
+            package.user = request.user
+            package.title = 'Premium'
+            form.save()
+            #messages.success(request, "Account Created Successfully!")
+            return HttpResponseRedirect(reverse('LoginApp:profile'))
+    return render(request, 'SubscriptionApp/package.html', context={'title':title, 'form':form})

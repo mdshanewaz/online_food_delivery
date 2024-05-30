@@ -19,7 +19,7 @@ class PackageModel(models.Model):
     days = models.ForeignKey(DaysModel, on_delete=models.CASCADE)
     title = models.CharField(max_length=10)
     deposite = models.IntegerField( null=True, blank=True) 
-    create_date = models.DateTimeField(auto_now_add=True)
+    create_date = models.DateTimeField(null=True, blank=True, auto_now_add=True)
     end_date = models.DateField(null=True, blank=True)
 
     def save(self, *args, **kwargs):
@@ -35,3 +35,17 @@ class PackageModel(models.Model):
     
     class Meta:
         verbose_name_plural = "Packages"
+
+
+class MealOffModel(models.Model):
+    subscription = models.ForeignKey(PackageModel, on_delete=models.CASCADE)
+    date = models.DateField()
+    lunch_off = models.BooleanField(default=False)
+    dinner_off = models.BooleanField(default=False)
+    date_creted = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.date_creted
+    
+    class Meta:
+        verbose_name_plural = "Meals"
